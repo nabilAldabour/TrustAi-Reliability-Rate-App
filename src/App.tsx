@@ -3,6 +3,7 @@ import {
   Search, Car, ShieldCheck, AlertTriangle, Lightbulb as LucideTooltip, 
   Info, History, ChevronRight, Star, DollarSign, Clock, 
   CheckCircle2, XCircle, Loader2, Sparkles, Heart, 
+  Smartphone,
   MessageSquare, LayoutGrid, ArrowLeftRight, Settings,
   Send, User, Bot, Filter, SlidersHorizontal, X
 } from 'lucide-react';
@@ -688,6 +689,62 @@ export default function App() {
                   >
                     Clear
                   </button>
+                </div>
+
+                <div className="glass-panel p-6 flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-white/5 flex items-center justify-center">
+                      <Send className="w-5 h-5 text-emerald-500" />
+                    </div>
+                    <div>
+                      <div className="font-bold">Share App</div>
+                      <div className="text-xs text-zinc-500">Invite friends to AutoTrust AI</div>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => {
+                      playSound('tap');
+                      if (navigator.share) {
+                        navigator.share({
+                          title: 'AutoTrust AI',
+                          text: 'Check out this professional vehicle reliability app!',
+                          url: window.location.href,
+                        });
+                      } else {
+                        navigator.clipboard.writeText(window.location.href);
+                        alert('Link copied to clipboard!');
+                      }
+                    }}
+                    className="px-4 py-2 rounded-lg bg-emerald-500/10 text-emerald-500 text-xs font-bold uppercase tracking-widest hover:bg-emerald-500/20 transition-all"
+                  >
+                    Share
+                  </button>
+                </div>
+
+                <div className="glass-panel p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-white/5 flex items-center justify-center">
+                      <Smartphone className="w-5 h-5 text-emerald-500" />
+                    </div>
+                    <div>
+                      <div className="font-bold">Install as App (Free)</div>
+                      <div className="text-xs text-zinc-500">No Play Store account needed</div>
+                    </div>
+                  </div>
+                  <p className="text-sm text-zinc-500 leading-relaxed mb-4">
+                    You can install AutoTrust AI directly to your home screen for free. This gives you a full-screen, native app experience without paying Google Play fees.
+                  </p>
+                  <div className="bg-zinc-100 dark:bg-white/5 p-4 rounded-xl space-y-2">
+                    <div className="text-xs font-bold uppercase tracking-widest text-zinc-400">Instructions:</div>
+                    <div className="text-sm flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-[10px] font-bold">1</div>
+                      <span>Tap the <span className="font-bold">Share</span> or <span className="font-bold">Menu</span> button in your browser.</span>
+                    </div>
+                    <div className="text-sm flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center text-[10px] font-bold">2</div>
+                      <span>Select <span className="font-bold">"Add to Home Screen"</span>.</span>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="glass-panel p-6">
