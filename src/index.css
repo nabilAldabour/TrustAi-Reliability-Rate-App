@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-primary: #10b981; /* Emerald 500 */
+  --color-brand-secondary: #3b82f6; /* Blue 500 */
+}
+
+@layer base {
+  body {
+    @apply bg-zinc-50 text-zinc-900 font-sans antialiased transition-colors duration-300;
+  }
+  
+  .dark body {
+    @apply bg-zinc-950 text-zinc-100;
+  }
+}
+
+.glass-panel {
+  @apply bg-white/80 backdrop-blur-md border border-zinc-200 rounded-2xl shadow-sm transition-all;
+}
+
+.dark .glass-panel {
+  @apply bg-zinc-900/50 border-white/10 shadow-none;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-blue-600;
+}
+
+.dark .gradient-text {
+  @apply from-emerald-400 to-blue-500;
+}
+
+.markdown-body h1 { @apply text-2xl font-bold mb-4 mt-6 text-zinc-900; }
+.markdown-body h2 { @apply text-xl font-semibold mb-3 mt-5 text-zinc-800; }
+.markdown-body h3 { @apply text-lg font-medium mb-2 mt-4 text-zinc-700; }
+.markdown-body p { @apply mb-4 leading-relaxed text-zinc-600; }
+.markdown-body ul { @apply list-disc pl-5 mb-4 space-y-2 text-zinc-600; }
+.markdown-body li { @apply mb-1; }
+.markdown-body strong { @apply text-zinc-900 font-semibold; }
+
+.dark .markdown-body h1 { @apply text-zinc-100; }
+.dark .markdown-body h2 { @apply text-zinc-200; }
+.dark .markdown-body h3 { @apply text-zinc-300; }
+.dark .markdown-body p { @apply text-zinc-400; }
+.dark .markdown-body ul { @apply text-zinc-400; }
+.dark .markdown-body strong { @apply text-zinc-100; }
+
+/* App-like transitions and layout */
+.app-container {
+  @apply fixed inset-0 flex flex-col overflow-hidden bg-zinc-50;
+}
+
+.dark .app-container {
+  @apply bg-zinc-950;
+}
+
+.app-content {
+  @apply flex-1 overflow-y-auto pb-24;
+}
+
+.bottom-nav {
+  @apply fixed bottom-0 left-0 right-0 h-20 bg-white/90 backdrop-blur-xl border-t border-zinc-200 flex items-center justify-around px-6 z-50;
+}
+
+.dark .bottom-nav {
+  @apply bg-zinc-900/90 border-white/5;
+}
+
+.nav-item {
+  @apply flex flex-col items-center gap-1 text-zinc-400 transition-all;
+}
+
+.nav-item.active {
+  @apply text-emerald-600;
+}
+
+.dark .nav-item.active {
+  @apply text-emerald-400;
+}
+
+.nav-item-icon {
+  @apply w-6 h-6;
+}
+
+.nav-item-label {
+  @apply text-[10px] font-bold uppercase tracking-widest;
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-300 rounded-full;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-zinc-800;
+}
+
+/* Mobile specific fixes */
+@media (max-width: 640px) {
+  .app-content {
+    @apply px-4;
+  }
+  .glass-panel {
+    @apply rounded-xl p-4;
+  }
+}
+
